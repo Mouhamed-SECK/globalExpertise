@@ -5,10 +5,12 @@
  */
 package dao;
 
+import models.Category;
+
 /**
  *
  * @author ASUS
  */
-public class CategoryDao {
-    
+public class CategoryDao implements IDao<Category>{
+    public kader is bg !!;
 }
