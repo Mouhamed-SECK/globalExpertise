@@ -21,8 +21,8 @@ import models.Category;
  */
 public class CategoryDao implements IDao<Category>{
    
-    private final String SQL_SELECT_ALL ="SELECT * FROM `categorie`";
-    private final String SQL_INSERT ="INSERT INTO `categorie` (`categoryId`, `name`) VALUES (?,?)";
+    private final String SQL_SELECT_ALL ="SELECT * FROM `category`";
+    private final String SQL_INSERT ="INSERT INTO `category` (`name`) VALUES (?)";
     private final Mysql mysql;
     
     public CategoryDao() {
