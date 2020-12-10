@@ -10,13 +10,13 @@ package models;
  * @author Mouhamed SECK
  */
 public class Adress {
-    private String idAdress;
+    private String addressId;
     private String city;
     private String location;
     private String district;
 
-    public Adress(String idAdress, String city, String location, String district) {
-        this.idAdress = idAdress;
+    public Adress(String addressId, String city, String location, String district) {
+        this.addressId = addressId;
         this.city = city;
         this.location = location;
         this.district = district;
@@ -54,8 +54,8 @@ public class Adress {
         this.district = district;
     }
 
-    public String getIdAdress() {
-        return idAdress;
+    public String getAddressId() {
+        return addressId;
     }
     
 }

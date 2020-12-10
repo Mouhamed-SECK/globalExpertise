@@ -5,8 +5,6 @@
  */
 package dao;
 
-import dao.Mysql;
-import dao.IDao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
