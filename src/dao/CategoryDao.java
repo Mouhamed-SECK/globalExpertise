@@ -5,6 +5,7 @@
  */
 package dao;
 
+import java.util.List;
 import models.Category;
 
 /**
@@ -12,5 +13,16 @@ import models.Category;
  * @author ASUS
  */
 public class CategoryDao implements IDao<Category>{
-    public kader is bg !!;
+   
+
+    @Override
+    public Category add(Category obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Category> selectAll() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }
