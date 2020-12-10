@@ -40,4 +40,11 @@ public class Category {
     public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
     }
+
+    @Override
+    public String toString() {
+        return "Category{" + "categoryId=" + categoryId + ", name=" + name + '}';
+    }
+    
+    
 }

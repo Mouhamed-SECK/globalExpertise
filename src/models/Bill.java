@@ -72,5 +72,11 @@ public class Bill {
     public int getBilId() {
         return bilId;
     }
+
+    @Override
+    public String toString() {
+        return "Bill{" + "bilId=" + bilId + ", billNumber=" + billNumber + ", type=" + type + ", status=" + status + ", totalAmount=" + totalAmount + ", date=" + date + ", order=" + order + '}';
+    }
+    
     
 }

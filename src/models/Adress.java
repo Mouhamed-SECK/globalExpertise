@@ -57,5 +57,12 @@ public class Adress {
     public String getAddressId() {
         return addressId;
     }
+
+    @Override
+    public String toString() {
+        return "Adress{" + "addressId=" + addressId + ", city=" + city + ", location=" + location + ", district=" + district + '}';
+    }
+    
+    
     
 }
