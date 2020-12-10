@@ -68,6 +68,30 @@ public class CategoryDao implements IDao<Category>{
         return null;
     }
     
+    public Category selectCategoryByName(String name) {
+        mysql.getConnection();
+        mysql.initPS(SELECT_CATEGORY_BY_NAME);
+        PreparedStatement psmt = mysql.getPstm();
+        Category category = null;
+        try {
+
+            psmt.setString(1, name);
+            ResultSet rs = mysql.executeSelect();
+
+            if (rs.next()) {
+                category = new Category();
+             
+                category.setName(rs.getString("name"));
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            mysql.closeConnection();
+        }
+
+        return category;
+    }
     
     
     
