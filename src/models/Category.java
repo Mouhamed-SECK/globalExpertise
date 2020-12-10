@@ -10,10 +10,10 @@ package models;
  * @author ASUS
  */
 public class Category {
-    private String categoryId;
+    private int categoryId;
     private String name;
 
-    public Category(String categoryId, String name) {
+    public Category(int categoryId, String name) {
         this.categoryId = categoryId;
         this.name = name;
     }
@@ -30,7 +30,11 @@ public class Category {
         this.name = name;
     }
 
-    public String getCategoryId() {
+    public int getCategoryId() {
         return categoryId;
+    }
+    
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 }
