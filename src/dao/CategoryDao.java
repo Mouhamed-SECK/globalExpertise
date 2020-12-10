@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.List;
 import models.Category;
 
 
@@ -24,11 +23,8 @@ import models.Category;
  */
 public class CategoryDao implements IDao<Category>{
    
-    
     private final String SQL_SELECT_ALL ="SELECT * FROM `categorie`";
     private final String SQL_INSERT ="INSERT INTO `categorie` (`categoryId`, `name`) VALUES (?,?)";
-    private final String SELECT_CATEGORY_BY_NAME = "SELECT `name` FROM `categorie` WHERE name=? ";
-    
     private final Mysql mysql;
     
     public CategoryDao() {
@@ -65,34 +61,27 @@ public class CategoryDao implements IDao<Category>{
 
     @Override
     public List<Category> selectAll() {
-        return null;
-    }
-    
-    public Category selectCategoryByName(String name) {
+        List<Category> categories = new ArrayList();
         mysql.getConnection();
-        mysql.initPS(SELECT_CATEGORY_BY_NAME);
-        PreparedStatement psmt = mysql.getPstm();
-        Category category = null;
+        
+        mysql.initPS(SQL_SELECT_ALL);
+  
+        PreparedStatement ps = mysql.getPstm();
         try {
-
-            psmt.setString(1, name);
-            ResultSet rs = mysql.executeSelect();
-
-            if (rs.next()) {
-                category = new Category();
-             
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Category category = new Category();
+                category.setCategoryId(rs.getInt("categoryId"));
                 category.setName(rs.getString("name"));
-
+                categories.add(category);
             }
+
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             mysql.closeConnection();
         }
-
-        return category;
+        return categories;
     }
-    
-    
     
 }
