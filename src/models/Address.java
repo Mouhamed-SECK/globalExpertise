@@ -27,6 +27,9 @@ public class Address {
         this.location = location;
         this.district = district;
     }
+
+    public Address() {
+    }
     
     
 
