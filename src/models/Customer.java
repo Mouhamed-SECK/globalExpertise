@@ -16,7 +16,7 @@ public class Customer extends User {
     
     private String phoneNumber;
     private String cni;
-    private List<Adress> addresses;
+    private List<Address> addresses;
 
  
     public Customer(String phoneNumber, String cni, int id, String name, String firstname, String email) {
@@ -51,7 +51,7 @@ public class Customer extends User {
 
     @Override
     public String toString() {
-        return super.toString() +  "Customer{" + "phoneNumber=" + phoneNumber + ", cni=" + cni + ", addresses=" + addresses + '}';
+        return "Customer{" +  super.toString() + "phoneNumber=" + phoneNumber + ", cni=" + cni + ", addresses=" + addresses + '}';
     }
     
     

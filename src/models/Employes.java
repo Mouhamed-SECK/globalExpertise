@@ -84,7 +84,7 @@ public class Employes extends User {
 
     @Override
     public String toString() {
-        return super.toString() + "Employes{" + "login=" + login + ", password=" + password + ", departement=" + departement + ", role=" + role + ", matricule=" + matricule + '}';
+        return "Employes{" + super.toString() + "login=" + login + ", password=" + password + ", departement=" + departement + ", role=" + role + ", matricule=" + matricule + '}';
     }
     
     

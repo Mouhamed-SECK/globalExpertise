@@ -13,18 +13,31 @@ import utilities.Utilities;
  * @author Mouhamed SECK
  */
 public class Bill {
-    private int bilId;
+    private int billId;
     private String billNumber;
     private String type;
     private String status;
     private Double totalAmount;
     private LocalDate date;
-
-    public Bill(int bilId, String type, String status, Double totalAmount, LocalDate date) {
-        this.bilId = bilId;
+    
+    private Order order;
+    
+    public static enum BillType {
+        PROFORMA, 
+        FINAL
+    }
+    public static enum BillStatus {
+        PAID,
+        UNPAID   
+    }
+    
+    public Bill(int billId, String billNumber, String type, String status, Double totalAmount, LocalDate date) {
+        this.billId = billId;
+        this.billNumber = billNumber;
         this.type = type;
         this.status = status;
         this.totalAmount = totalAmount;
+        this.date = date;
     }
 
     public Bill(String type, String status, Double totalAmount, LocalDate date) {
@@ -35,8 +48,6 @@ public class Bill {
         this.date = LocalDate.now();
     }
     
-    Order order;
-
     public String getType() {
         return type;
     }
@@ -70,12 +81,13 @@ public class Bill {
     }
 
     public int getBilId() {
-        return bilId;
+        return billId;
     }
+    
 
     @Override
     public String toString() {
-        return "Bill{" + "bilId=" + bilId + ", billNumber=" + billNumber + ", type=" + type + ", status=" + status + ", totalAmount=" + totalAmount + ", date=" + date + ", order=" + order + '}';
+        return "billId=" + "Bill{" + billId + ", billNumber=" + billNumber + ", type=" + type + ", status=" + status + ", totalAmount=" + totalAmount + ", date=" + date + ", order=" + order + '}';
     }
     
     
