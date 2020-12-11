@@ -33,6 +33,9 @@ public class Product {
         this.quantityInStock = quantityInStock;
         this.productCategory = category;
     }
+
+    public Product() {
+    }
     
     
 
