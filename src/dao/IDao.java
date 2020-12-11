@@ -10,6 +10,7 @@ import java.util.List;
 /**
  *
  * @author Mouhamed SECK
+ * @param <T>
  */
 public interface IDao<T> {
     public T add(T obj);

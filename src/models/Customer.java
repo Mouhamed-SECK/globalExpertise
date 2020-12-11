@@ -48,6 +48,13 @@ public class Customer extends User {
     public void setCni(String cni) {
         this.cni = cni;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() +  "Customer{" + "phoneNumber=" + phoneNumber + ", cni=" + cni + ", addresses=" + addresses + '}';
+    }
+    
+    
     
       
 }

@@ -81,6 +81,12 @@ public class Employes extends User {
     public void setRole(String role) {
         this.role = role;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + "Employes{" + "login=" + login + ", password=" + password + ", departement=" + departement + ", role=" + role + ", matricule=" + matricule + '}';
+    }
+    
     
     
     

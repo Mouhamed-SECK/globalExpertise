@@ -29,7 +29,6 @@ public class Mysql {
             Class.forName("com.mysql.cj.jdbc.Driver");
             cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/global_expertise?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC", "root", "");
         } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
         }
 
     }
