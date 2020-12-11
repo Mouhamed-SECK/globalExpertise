@@ -24,8 +24,8 @@ import models.User;
  */
 public class UserDao implements IDao<User> {
 
-    private static enum Type {
-        CUSTOMER, EMPLOYES
+    public static enum Type {
+       CUSTOMER , EMPLOYES
     }
 
     private final String SQL_SELECT_ALL_CUSTOMER = "SELECT * FROM `user` WHERE type LIKE 'CUSTOMER'";
@@ -34,7 +34,7 @@ public class UserDao implements IDao<User> {
     private final String SQL_SELECT_ALL_EMPLOYES = "SELECT * FROM `user` WHERE type LIKE 'EMPLOYES'";
     private final String SQL_INSERT_EMPLOYES = "INSERT INTO `user` (`name`, `firstname`, `email`, `matricule`, `login`,`password`, `departement`, `roles`, `type`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private final String SELECT_USER_BY_LOGIN_PASSWORD = "SELECT name, firstname, departement, roles, matricule FROM `user` WHERE email=? and password=? ";
-    
+
     private final Mysql mysql;
 
     private Type typeOfSelect;
@@ -54,13 +54,13 @@ public class UserDao implements IDao<User> {
     @Override
     public User add(User user) {
         mysql.getConnection();
-        
+
         if (user instanceof Customer) {
             mysql.initPS(SQL_INSERT_CUSTOMER);
         } else {
             mysql.initPS(SQL_INSERT_EMPLOYES);
         }
-        
+
         PreparedStatement psmt = mysql.getPstm();
         try {
             psmt.setString(1, user.getName());
@@ -107,34 +107,35 @@ public class UserDao implements IDao<User> {
         } else {
             mysql.initPS(SQL_SELECT_ALL_EMPLOYES);
         }
+
         PreparedStatement ps = mysql.getPstm();
         try {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                User user = new User();
+                User user = null;
+
+                if (rs.getString("type").compareTo("CUSTOMER") == 0) {
+                    user = new Customer();
+                    ((Customer) user).setCni(rs.getString("cni"));
+                } else {
+                    user = new Employes();
+                    ((Employes) user).setDepartement(rs.getString("departement"));
+                    ((Employes) user).setMatricule(rs.getString("matricule"));
+                    ((Employes) user).setRole(rs.getString("roles"));
+                }
                 user.setUserId(rs.getInt("userId"));
                 user.setName(rs.getString("name"));
                 user.setFirstname(rs.getString("firstname"));
                 user.setEmail(rs.getString("email"));
-                user.setEmail(rs.getString("type"));
-
-                if (typeOfSelect == Type.CUSTOMER) {
-                    ((Customer) user).setCni(rs.getString("cni"));
-                    ((Customer) user).setPhoneNumber(rs.getString("phoneNumber"));
-                } else {
-                    ((Employes) user).setDepartement(rs.getString("departement"));
-                    ((Employes) user).setMatricule(rs.getString("mtricule"));
-
-                }
+                users.add(user);
             }
-
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             mysql.closeConnection();
         }
-        return null;
+        return users;
     }
 
     public Employes selectUserByEmailAndPassword(String login, String password) {
