@@ -26,12 +26,19 @@ public class Product {
         this.quantityInStock = quantityInStock;
     }
 
-    public Product(String code, String name, double price, int quantityInStock, Category category) {
+    public Product(String code, String name, double price, int quantityInStock) {
         this.code = code;
         this.name = name;
         this.price = price;
         this.quantityInStock = quantityInStock;
-        this.productCategory = category;
+    }
+    
+    public Product(String code, String name, double price, int quantityInStock, Category productCategory) {
+        this.code = code;
+        this.name = name;
+        this.price = price;
+        this.quantityInStock = quantityInStock;
+        this.productCategory = productCategory;
     }
 
     public Product() {
