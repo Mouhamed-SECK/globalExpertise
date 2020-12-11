@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.Address;
+import models.User;
 
 /**
  *
@@ -60,13 +61,14 @@ public class AddressDao implements IDao<Address> {
     @Override
     public List<Address> selectAll() {
         
-       /*List<Address> addresses = new ArrayList();
+       List<Address> addresses = new ArrayList();
         mysql.getConnection();
         
         mysql.initPS(SQL_SELECT_ALL);
   
         PreparedStatement ps = mysql.getPstm();
         try {
+            /*ps.setInt(1, idCustomer);*/
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -84,8 +86,8 @@ public class AddressDao implements IDao<Address> {
         } finally {
             mysql.closeConnection();
         }
-        return addresses;*/
-       return null;
+        return addresses;
+       
     }
     
     
