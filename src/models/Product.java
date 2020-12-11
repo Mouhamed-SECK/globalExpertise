@@ -11,15 +11,15 @@ package models;
  */
 public class Product {
     
-    private int productID;
+    private int productId;
     private String code;
     private String name;
     private double price;
     private int quantityInStock;
     private Category productCategory;
 
-    public Product(int productID, String code, String name, double price, int quantityInStock) {
-        this.productID = productID;
+    public Product(int productId, String code, String name, double price, int quantityInStock) {
+        this.productId = productId;
         this.code = code;
         this.name = name;
         this.price = price;
@@ -36,8 +36,8 @@ public class Product {
     
     
 
-    public int getProductID() {
-        return productID;
+    public int getProductId() {
+        return productId;
     }
 
     public String getCode() {
@@ -72,11 +72,25 @@ public class Product {
         this.quantityInStock = quantityInStock;
     }
 
-    @Override
-    public String toString() {
-        return "Product{" + "productID=" + productID + ", code=" + code + ", name=" + name + ", price=" + price + ", quantityInStock=" + quantityInStock + ", productCategory=" + productCategory + '}';
+    public Category getProductCategory() {
+        return productCategory;
+    }
+
+    public void setProductCategory(Category productCategory) {
+        this.productCategory = productCategory;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
     
+
+    @Override
+    public String toString() {
+        return "Product{" + "productId=" + productId + ", code=" + code + ", name=" + name + ", price=" + price + ", quantityInStock=" + quantityInStock + ", productCategory=" + productCategory + '}';
+    }
+
+   
     
     
 }
