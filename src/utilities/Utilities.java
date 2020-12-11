@@ -32,7 +32,12 @@ public class Utilities {
         .toString();
      }
    
-   public void changeView (ActionEvent event, String view) {
+    /**
+     *
+     * @param event
+     * @param view
+     */
+    public  void changeView (ActionEvent event, String view) {
               try {
 
                     //add you loading or delays - ;-)
@@ -48,5 +53,5 @@ public class Utilities {
                     System.err.println(ex.getMessage());
                 }
    }
-   
+
 }
