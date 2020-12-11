@@ -27,8 +27,7 @@ import utilities.Validation;
  */
 public class LoginController implements Initializable {
 
-    private Label label;
-    @FXML
+   @FXML
     private TextField txtUsername;
     @FXML
     private PasswordField txtPassword;
@@ -40,25 +39,27 @@ public class LoginController implements Initializable {
     private Button loginBtn;
 
     private Employes loggedUser;
-    private Security security;
-    private Utilities utils;
-
-    public LoginController() {
-        security = new Security();
-        utils = new Utilities();
+    private final Security security;
+    private final Utilities utils;
+    
+    public static LoginController connexion;
+    
+    public static LoginController getConnexion () {
+        return connexion;
     }
 
     public Employes getLoggedUser() {
         return loggedUser;
     }
 
-   
-    
+    public LoginController() {
+        security = new Security();
+        utils = new Utilities();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
-        
+        connexion = this;
     }
     
 
