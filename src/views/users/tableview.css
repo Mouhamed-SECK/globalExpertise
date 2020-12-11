@@ -2,14 +2,14 @@
     -fx-cursor:hand ;
 }
 .table-view {
-    -fx-background-color:#651FFF;
-    -fx-background-radius:14 14 0 0;
+    -fx-background-color: #EBE8F9;
+    -fx-background-radius:10 10 0 0;
     
     }
 .table-view .column-header-background{
-        -fx-background-color: #651FFF;
-        -fx-background-radius:14;
-        -fx-background-insets: 0 0 10 0;
+        -fx-background-color: #2a73ff;
+        -fx-background-radius:10;
+        -fx-background-insets: 0 0 0 0;
        
         
         
