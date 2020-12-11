@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 import models.Employes;
 import models.User;
 import utilities.Utilities;
@@ -26,14 +27,10 @@ public class DashbordController implements Initializable {
     @FXML
     private Button btnSignout;
 
-    @FXML
     private Pane pnlUsers;
 
-    @FXML
     private Pane pnlOrders;
-    @FXML
     private Pane pnlProducts;
-    @FXML
     private Pane pnlComptable;
 
     @FXML
@@ -49,24 +46,25 @@ public class DashbordController implements Initializable {
 
     private Utilities utils;
     @FXML
-    private Label fullNameLabel;
+    private Text fullNameLabel;
     @FXML
-    private Label roleLabel;
+    private Text roleLabel;
 
     private Employes loggedUser;
 
-    private LoginController loginController;
+    @FXML
+    private Text departmentLabel;
+    @FXML
+    private Button btnUsers1;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         utils = new Utilities();
-        loginController = new LoginController();
-      /*  loggedUser = loginController.getLoggedUser();
-        System.out.println(loggedUser.getEmail());
-        System.out.println(loggedUser.getRole());
+        loggedUser = LoginController.getConnexion().getLoggedUser();
 
-       // fullNameLabel.setText(loggedUser.getEmail());
-        roleLabel.setText(loggedUser.getRole());*/
+        fullNameLabel.setText(loggedUser.getFirstname() + " " + loggedUser.getName().toUpperCase());
+        departmentLabel.setText("Departement : " + loggedUser.getRole());
+        roleLabel.setText("Role : " + loggedUser.getRole());
 
     }
 
@@ -87,10 +85,9 @@ public class DashbordController implements Initializable {
             pnlOrders.setStyle("-fx-background-color : #464F67");
             pnlOrders.toFront();
         }
+        if (actionEvent.getSource() == btnSignout) {
+            utils.changeView(actionEvent, "/authentication/Login");
+        }
     }
 
-    @FXML
-    private void handleLogout(ActionEvent event) {
-        utils.changeView(event, "authentication/Login");
-    }
 }
