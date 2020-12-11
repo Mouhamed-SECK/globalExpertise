@@ -14,6 +14,7 @@ public class Address {
     private String city;
     private String location;
     private String district;
+    private User addressCustomer;
 
     public Address(int addressId, String city, String location, String district) {
         this.addressId = addressId;
@@ -28,9 +29,17 @@ public class Address {
         this.district = district;
     }
 
-    public Address() {
+    public Address(String city, String location, String district, User addressCustomer) {
+        this.city = city;
+        this.location = location;
+        this.district = district;
+        this.addressCustomer = addressCustomer;
     }
     
+    
+
+    public Address() {
+    }
     
 
     public String getCity() {
@@ -60,16 +69,23 @@ public class Address {
     public int getAddressId() {
         return addressId;
     }
-
-    @Override
-    public String toString() {
-        return "Adress{" + "addressId=" + addressId + ", city=" + city + ", location=" + location + ", district=" + district + '}';
-    }
-
+    
     public int setAddressId(int addressId) {
        return addressId;
     }
-    
-    
+
+    public User getAddressCustomer() {
+        return addressCustomer;
+    }
+
+    public void setAddressCustomer(User addressCustomer) {
+        this.addressCustomer = addressCustomer;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" + "addressId=" + addressId + ", city=" + city + ", location=" + location + ", district=" + district + ", addressCustomer=" + addressCustomer + '}';
+    }
+
     
 }
