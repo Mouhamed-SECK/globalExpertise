@@ -8,7 +8,7 @@
     }
 .table-view .column-header-background{
         -fx-background-color: #2a73ff;
-        -fx-background-radius:10;
+        -fx-background-radius:10 10 0 0;
         -fx-background-insets: 0 0 0 0;
        
         

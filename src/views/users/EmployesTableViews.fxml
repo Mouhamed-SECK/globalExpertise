@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import java.net.URL?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="314.0" prefWidth="691.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tableView.TableViewController">
+<AnchorPane id="AnchorPane" prefHeight="536.0" prefWidth="997.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.users.EmployesTableViewsController">
     <stylesheets>
         <URL value="@tableview.css" />
     </stylesheets>
    <children>
-      <TableView fx:id="studentsTable" layoutX="49.0" prefHeight="305.0" prefWidth="589.0">
+      <TableView fx:id="tblvEmployes" layoutX="15.0" layoutY="76.0" prefHeight="460.0" prefWidth="969.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="13.0">
         <columns>
-          <TableColumn fx:id="idCol" maxWidth="129.0" prefWidth="113.0" style="-fx-alignment: center;" text="Matricule" />
-          <TableColumn fx:id="nameCol" maxWidth="156.0" prefWidth="113.0" style="-fx-alignment: center;" text="Nom" />
-            <TableColumn fx:id="birthCol" maxWidth="167.0" prefWidth="161.0" style="-fx-alignment: center;" text="Prenom" />
-            <TableColumn fx:id="adressCol" maxWidth="116.0" minWidth="0.0" prefWidth="1.0" style="-fx-alignment: center;" />
-            <TableColumn fx:id="emailCol" maxWidth="140.0" prefWidth="107.0" style="-fx-alignment: center;" text="email" />
-            <TableColumn fx:id="editCol" maxWidth="78.0" prefWidth="78.0" style="-fx-alignment: center;" text="Action" />
+          <TableColumn fx:id="matriculeCol" maxWidth="129.0" prefWidth="96.0" style="-fx-alignment: center;" text="Matricule" />
+          <TableColumn fx:id="nameCol" maxWidth="156.0" prefWidth="103.0" style="-fx-alignment: center;" text="Nom" />
+            <TableColumn fx:id="firstNameCol" maxWidth="167.0" prefWidth="129.0" style="-fx-alignment: center;" text="Prenom" />
+            <TableColumn fx:id="emailCol" maxWidth="210.0" prefWidth="154.0" style="-fx-alignment: center;" text="email" />
+            <TableColumn fx:id="departementCol" maxWidth="241.0" prefWidth="167.0" style="-fx-alignment: center;" text="Departement" />
+            <TableColumn fx:id="roleCol" maxWidth="241.0" prefWidth="129.0" style="-fx-alignment: center;" text="Role" />
+            <TableColumn fx:id="departementCol11" maxWidth="241.0" prefWidth="167.0" style="-fx-alignment: center;" text="Action" />
         </columns>
       </TableView>
+      <JFXButton layoutX="867.0" layoutY="22.0" text="Add Emplyes" />
      
  
    </children>
