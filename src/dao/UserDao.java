@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import models.Customer;
 import models.Employes;
 import models.User;
@@ -99,8 +101,9 @@ public class UserDao implements IDao<User> {
     }
 
     @Override
-    public List<User> selectAll() {
-        List<User> users = new ArrayList();
+    
+    public ObservableList<User> selectAll() {
+        ObservableList<User> users =  FXCollections.observableArrayList();
         mysql.getConnection();
         if (typeOfSelect == Type.CUSTOMER) {
             mysql.initPS(SQL_SELECT_ALL_CUSTOMER);
@@ -128,6 +131,7 @@ public class UserDao implements IDao<User> {
                 user.setName(rs.getString("name"));
                 user.setFirstname(rs.getString("firstname"));
                 user.setEmail(rs.getString("email"));
+                
                 users.add(user);
             }
         } catch (SQLException ex) {
