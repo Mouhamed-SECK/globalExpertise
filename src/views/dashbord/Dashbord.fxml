@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="753.0" prefWidth="1178.0" style="-fx-background-color: #fff;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.dashbord.DashbordController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="753.0" prefWidth="1327.0" style="-fx-background-color: #fff;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.dashbord.DashbordController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="-3.0" prefHeight="753.0" prefWidth="309.0" style="-fx-background-color: #EBE8F9;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -30,7 +30,7 @@
                </VBox.margin>
             </Text>
             <Text fx:id="roleLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Role" textAlignment="CENTER" wrappingWidth="215.771484375" />
-            <Button fx:id="btnUsers" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="322.0" stylesheets="@style.css" text="Lister Employer" textFill="#5c5555">
+            <Button fx:id="listEmployes" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="322.0" stylesheets="@style.css" text="Lister Employer" textFill="#5c5555">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -45,7 +45,7 @@
                   <Insets top="40.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnUsers1" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="313.0" stylesheets="@style.css" text="Lister Client" textFill="#5c5555">
+            <Button fx:id="listCustomer" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="313.0" stylesheets="@style.css" text="Lister Client" textFill="#5c5555">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -130,7 +130,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <HBox alignment="CENTER_LEFT" layoutX="384.0" layoutY="74.0" prefHeight="92.0" prefWidth="742.0" spacing="50.0">
+      <HBox alignment="CENTER_LEFT" layoutX="442.0" layoutY="70.0" prefHeight="92.0" prefWidth="860.0" spacing="50.0">
          <children>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
@@ -142,14 +142,14 @@
                   <Label text="Totale Commande" textFill="#514b4b" />
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="92.0" prefWidth="134.0">
+            <VBox alignment="CENTER" prefHeight="92.0" prefWidth="161.0">
                <children>
                   <Label text="1500" textFill="#26bfbc">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="18.0" prefWidth="151.0" text="      Commande Livré" textAlignment="CENTER" textFill="#514b4b" />
+                  <Label prefHeight="21.0" prefWidth="171.0" text="      Commande Livré" textAlignment="CENTER" textFill="#514b4b" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="92.0" prefWidth="164.0">
@@ -169,12 +169,12 @@
                         <Font name="System Bold" size="26.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="18.0" prefWidth="160.0" text="Commande en preparaton" textFill="#514b4b" />
+                  <Label prefHeight="21.0" prefWidth="187.0" text="Commande en preparaton" textFill="#514b4b" />
                </children>
             </VBox>
          </children>
       </HBox>
-      <AnchorPane layoutX="281.0" layoutY="58.0" prefHeight="662.0" prefWidth="871.0" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="281.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="58.0" />
+      <AnchorPane fx:id="mainContent" layoutX="325.0" layoutY="168.0" prefHeight="552.0" prefWidth="976.0" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="325.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="168.0" />
    </children>
    <effect>
       <DropShadow color="#1b1eeb" />
