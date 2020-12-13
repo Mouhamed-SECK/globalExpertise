@@ -71,13 +71,10 @@ public class LoginController implements Initializable {
         if (Validation.isEmpty(login) && Validation.isEmpty(password)) {
            loggedUser = security.logInUser(login, password);
             if (loggedUser != null) {
-                Validation.setLabelMessage(lblErrors, Color.GREEN, "Authentification avec success..Redirection...");
                 utils.changeView(event, "/dashbord/Dashbord");
-
             } else {
                 Validation.setLabelMessage(lblErrors, Color.TOMATO, "Login ou mot de passe incorect");
             }
-
         } else {
             Validation.setLabelMessage(lblErrors, Color.TOMATO, "Ces champs ne peuvent être vide");
         }
