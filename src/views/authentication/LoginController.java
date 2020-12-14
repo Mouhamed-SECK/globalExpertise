@@ -16,7 +16,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import models.Employes;
-import models.User;
 import services.Security;
 import utilities.Utilities;
 import utilities.Validation;

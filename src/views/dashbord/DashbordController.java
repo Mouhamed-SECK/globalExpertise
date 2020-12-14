@@ -51,7 +51,7 @@ public class DashbordController implements Initializable {
         loggedUser = LoginController.getConnexion().getLoggedUser();
 
         fullNameLabel.setText(loggedUser.getFirstname() + " " + loggedUser.getName().toUpperCase());
-        departmentLabel.setText("Departement : " + loggedUser.getRole());
+        departmentLabel.setText("Departement : " + loggedUser.getDepartement());
         roleLabel.setText("Role : " + loggedUser.getRole());
         try {
             utils.loadViewContent(mainContent, "/users/EmployesTableViews");
