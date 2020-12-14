@@ -19,8 +19,8 @@
             <TableColumn fx:id="firstNameCol" maxWidth="167.0" prefWidth="129.0" style="-fx-alignment: center;" text="Prenom" />
             <TableColumn fx:id="emailCol" maxWidth="210.0" prefWidth="154.0" style="-fx-alignment: center;" text="email" />
             <TableColumn fx:id="departementCol" maxWidth="241.0" prefWidth="167.0" style="-fx-alignment: center;" text="Departement" />
-            <TableColumn fx:id="roleCol" maxWidth="241.0" prefWidth="129.0" style="-fx-alignment: center;" text="Role" />
-            <TableColumn fx:id="departementCol11" maxWidth="241.0" prefWidth="167.0" style="-fx-alignment: center;" text="Action" />
+            <TableColumn fx:id="roleCol" maxWidth="241.0" prefWidth="154.0" style="-fx-alignment: center;" text="Role" />
+            <TableColumn fx:id="actionCol" maxWidth="241.0" prefWidth="165.0" style="-fx-alignment: center;" text="Action" />
         </columns>
       </TableView>
       <Button fx:id="addEmployesBtn" layoutX="877.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleAddEmployes" text="Add Emplyes" />

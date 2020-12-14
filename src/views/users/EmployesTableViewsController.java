@@ -1,5 +1,8 @@
 package views.users;
 
+import de.jensd.fx.glyphs.GlyphsDude;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -10,14 +13,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Callback;
 import models.User;
 import services.Security;
 
@@ -49,21 +56,18 @@ public class EmployesTableViewsController implements Initializable {
 
     @FXML
     private Button addEmployesBtn;
-    @FXML
-    private TableColumn<?, ?> departementCol11;
-    
+
     private static EmployesTableViewsController tblvController;
 
     public static EmployesTableViewsController getTblvController() {
         return tblvController;
     }
+    @FXML
+    private TableColumn<User, String> actionCol;
 
     public ObservableList<User> getEmployesData() {
         return employesData;
     }
-    
-    
-    
 
     /**
      * Initializes the controller class.
@@ -73,20 +77,68 @@ public class EmployesTableViewsController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         security = new Security();
         employesData = security.fetchEmployesList();
+        tblvController = this;
         matriculeCol.setCellValueFactory(new PropertyValueFactory<>("matricule"));
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstname"));
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
         roleCol.setCellValueFactory(new PropertyValueFactory<>("role"));
         departementCol.setCellValueFactory(new PropertyValueFactory<>("departement"));
+
+        //add cell of button edit 
+        Callback<TableColumn<User, String>, TableCell<User, String>> cellFoctory = (TableColumn<User, String> param) -> {
+            // make cell containing buttons
+            final TableCell<User, String> cell = new TableCell<User, String>() {
+
+                @Override
+                public void updateItem(String item, boolean empty) {
+                    //that cell created only on non-empty rows
+                    super.updateItem(item, empty);
+
+                    if (empty) {
+                        setGraphic(null);
+                        setText(null);
+                    } else {
+                        FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
+                        FontAwesomeIconView editIcon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL_SQUARE);
+
+                        deleteIcon.setStyle(
+                                " -fx-cursor: hand ;"
+                                + "-glyph-size:28px;"
+                                + "-fx-fill:#ff1744;"
+                        );
+                        editIcon.setStyle(
+                                " -fx-cursor: hand ;"
+                                + "-glyph-size:28px;"
+                                + "-fx-fill:#00E676;"
+                        );
+
+                        HBox managebtn = new HBox(editIcon, deleteIcon);
+                        managebtn.setStyle("-fx-alignment:center");
+                        HBox.setMargin(deleteIcon, new Insets(2, 2, 0, 3));
+                        HBox.setMargin(editIcon, new Insets(2, 3, 0, 2));
+
+                        setGraphic(managebtn);
+
+                        setText(null);
+
+                    }
+                }
+
+            };
+            return cell;
+
+        };
+        actionCol.setCellFactory(cellFoctory);
         tblvEmployes.setItems(employesData);
-        tblvController = this;
+
     }
 
     @FXML
+
     private void handleAddEmployes(ActionEvent event) {
         try {
             Parent parent = FXMLLoader.load(getClass().getResource("/views/users/addEmployes.fxml"));
