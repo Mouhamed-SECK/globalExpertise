@@ -5,9 +5,13 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,6 +25,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -115,6 +120,17 @@ public class EmployesTableViewsController implements Initializable {
                                 + "-glyph-size:28px;"
                                 + "-fx-fill:#00E676;"
                         );
+
+                        deleteIcon.setOnMouseClicked((MouseEvent event) -> {
+                            int employesId = tblvEmployes.getSelectionModel().getSelectedItem().getUserId();
+                            for (Iterator<User> i = employesData.iterator(); i.hasNext();) {
+                                User emp = i.next();
+                                if (emp.getUserId() == employesId) {
+                                    i.remove();
+                                } 
+                            }
+                             security.deleteEmployes(employesId);
+                        });
 
                         HBox managebtn = new HBox(editIcon, deleteIcon);
                         managebtn.setStyle("-fx-alignment:center");

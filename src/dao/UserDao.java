@@ -5,7 +5,6 @@
  */
 package dao;
 
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -37,6 +36,8 @@ public class UserDao implements IDao<User> {
     private final String SQL_SELECT_ALL_EMPLOYES = "SELECT * FROM `user` WHERE type LIKE 'EMPLOYES'";
     private final String SQL_INSERT_EMPLOYES = "INSERT INTO `user` (`name`, `firstname`, `email`, `matricule`, `login`,`password`, `departement`, `roles`, `image`, `type`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
     private final String SELECT_USER_BY_LOGIN_PASSWORD = "SELECT name, firstname, departement, roles, matricule FROM `user` WHERE email=? and password=? ";
+
+    private final String SQL_DELETE = "DELETE FROM `user` WHERE userId=?";
 
     private final Mysql mysql;
 
@@ -81,10 +82,10 @@ public class UserDao implements IDao<User> {
                 psmt.setString(6, ((Employes) user).getPassword());
                 psmt.setString(7, ((Employes) user).getDepartement());
                 psmt.setString(8, ((Employes) user).getRole());
-                
+
                 File avartar = ((Employes) user).getAvatar();
                 FileInputStream fis = new FileInputStream(avartar);
-                psmt.setBinaryStream(9, (InputStream)fis , (int)avartar.length());
+                psmt.setBinaryStream(9, (InputStream) fis, (int) avartar.length());
 
                 psmt.setString(10, Type.EMPLOYES.name());
 
@@ -174,6 +175,24 @@ public class UserDao implements IDao<User> {
         }
 
         return employes;
+    }
+
+    public void delete(int id)  {
+        mysql.getConnection();
+
+        mysql.initPS(SQL_DELETE);
+        PreparedStatement psmt = mysql.getPstm();
+
+        try {
+            psmt.setInt(1, id);
+            psmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            mysql.closeConnection();
+        }
+
     }
 
 }

@@ -30,5 +30,9 @@ public class Security {
         Employes employes = new Employes(name, departement,role, name, firtsName, email, avatar);
         return userDao.add(employes);  
     }
+    
+    public void deleteEmployes(int id) {
+        userDao.delete(id);
+    }
 
 }
