@@ -5,13 +5,14 @@
  */
 package dao;
 
-import dao.Mysql;
-import dao.IDao;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -27,14 +28,14 @@ import models.User;
 public class UserDao implements IDao<User> {
 
     public static enum Type {
-       CUSTOMER , EMPLOYES
+        CUSTOMER, EMPLOYES
     }
 
     private final String SQL_SELECT_ALL_CUSTOMER = "SELECT * FROM `user` WHERE type LIKE 'CUSTOMER'";
     private final String SQL_INSERT_CUSTOMER = "INSERT INTO `user` (`name`, `firstname`, `email`, `cni`, `phoneNumber`, `type`) VALUES (?, ?, ?, ?, ?, ?)";
 
     private final String SQL_SELECT_ALL_EMPLOYES = "SELECT * FROM `user` WHERE type LIKE 'EMPLOYES'";
-    private final String SQL_INSERT_EMPLOYES = "INSERT INTO `user` (`name`, `firstname`, `email`, `matricule`, `login`,`password`, `departement`, `roles`, `type`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private final String SQL_INSERT_EMPLOYES = "INSERT INTO `user` (`name`, `firstname`, `email`, `matricule`, `login`,`password`, `departement`, `roles`, `image`, `type`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
     private final String SELECT_USER_BY_LOGIN_PASSWORD = "SELECT name, firstname, departement, roles, matricule FROM `user` WHERE email=? and password=? ";
 
     private final Mysql mysql;
@@ -80,8 +81,12 @@ public class UserDao implements IDao<User> {
                 psmt.setString(6, ((Employes) user).getPassword());
                 psmt.setString(7, ((Employes) user).getDepartement());
                 psmt.setString(8, ((Employes) user).getRole());
+                
+                File avartar = ((Employes) user).getAvatar();
+                FileInputStream fis = new FileInputStream(avartar);
+                psmt.setBinaryStream(9, (InputStream)fis , (int)avartar.length());
 
-                psmt.setString(9, Type.EMPLOYES.name());
+                psmt.setString(10, Type.EMPLOYES.name());
 
             }
             psmt.executeUpdate();
@@ -91,7 +96,7 @@ public class UserDao implements IDao<User> {
                 user.setUserId(id);
             }
 
-        } catch (SQLException ex) {
+        } catch (SQLException | FileNotFoundException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             mysql.closeConnection();
@@ -101,9 +106,9 @@ public class UserDao implements IDao<User> {
     }
 
     @Override
-    
+
     public ObservableList<User> selectAll() {
-        ObservableList<User> users =  FXCollections.observableArrayList();
+        ObservableList<User> users = FXCollections.observableArrayList();
         mysql.getConnection();
         if (typeOfSelect == Type.CUSTOMER) {
             mysql.initPS(SQL_SELECT_ALL_CUSTOMER);
@@ -131,7 +136,7 @@ public class UserDao implements IDao<User> {
                 user.setName(rs.getString("name"));
                 user.setFirstname(rs.getString("firstname"));
                 user.setEmail(rs.getString("email"));
-                
+
                 users.add(user);
             }
         } catch (SQLException ex) {
