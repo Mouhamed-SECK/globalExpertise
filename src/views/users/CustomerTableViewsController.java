@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package views.users;
 
 import com.jfoenix.controls.JFXTextField;
@@ -24,6 +29,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
+import models.Address;
+import models.Customer;
 import models.Employes;
 import models.User;
 import services.Security;
@@ -34,80 +41,73 @@ import utilities.Utilities;
  *
  * @author ASUS
  */
-public class EmployesTableViewsController implements Initializable {
+public class CustomerTableViewsController implements Initializable {
 
     @FXML
-    private TableView<User> tblvEmployes;
-
+    private TableView<User> tblvCustomer;
     @FXML
     private TableColumn<User, String> nameCol;
     @FXML
-    private TableColumn<User, String> emailCol;
-    @FXML
-    private TableColumn<User, String> matriculeCol;
-    @FXML
     private TableColumn<User, String> firstNameCol;
     @FXML
-    private TableColumn<User, String> departementCol;
-    @FXML
-    private TableColumn<User, String> roleCol;
-
-    private Security security;
-    //private ObservableList<User> employesData;
-
-    @FXML
-    private Button addEmployesBtn;
-
-    private static EmployesTableViewsController tblvController;
-
-    private boolean isUpdate;
-
-    private Employes employes;
-
-    //Filtered
-    @FXML
-    private JFXTextField filterField;
-
-    private ObservableList<User> employesData = FXCollections.observableArrayList();
-
-    public boolean isIsUpdate() {
-        return isUpdate;
-    }
-
-    public void setIsUpdate(boolean isUpdate) {
-        this.isUpdate = isUpdate;
-    }
-
-    public static EmployesTableViewsController getTblvController() {
-        return tblvController;
-    }
+    private TableColumn<User, String> emailCol;
     @FXML
     private TableColumn<User, String> actionCol;
+    @FXML
+    private TableColumn<User, String> cniCol;
+    @FXML
+    private TableColumn<User, String> telCol;
 
-    public ObservableList<User> getEmployesData() {
-        return employesData;
-    }
+    @FXML
+    private Button addCustomerBtn;
+    @FXML
+    private JFXTextField filterField;
+    @FXML
+    private TableView<Address> tblvAddres;
+
+    @FXML
+    private TableColumn<Address, String> cityCol;
+    @FXML
+    private TableColumn<Address, String> districtCol;
+    @FXML
+    private TableColumn<Address, String> locationCol;
+
+    @FXML
+    private Button passOrderBtn;
+    @FXML
+    private JFXTextField cityFld;
+    @FXML
+    private JFXTextField districtFld;
+    @FXML
+    private JFXTextField locationFld;
+    @FXML
+    private Button addAdressBtn;
+
+    private Security security;
+
+    private Customer customer;
+
+    private ObservableList<User> customerData = FXCollections.observableArrayList();
+    private  ObservableList<Address> addressData = FXCollections.observableArrayList();
+
+    @FXML
+    private TableColumn<?, ?> adessActionCol;
 
     /**
      * Initializes the controller class.
-     *
-     * @param url
-     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
         security = new Security();
-        employesData = security.fetchEmployesList();
+        customerData = security.fetchCustomerList();
 
-        tblvController = this;
-        matriculeCol.setCellValueFactory(new PropertyValueFactory<>("matricule"));
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstname"));
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
-        roleCol.setCellValueFactory(new PropertyValueFactory<>("role"));
-        departementCol.setCellValueFactory(new PropertyValueFactory<>("departement"));
-
+        cniCol.setCellValueFactory(new PropertyValueFactory<>("cni"));
+        telCol.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        
+        
         //add cell of button edit 
         Callback<TableColumn<User, String>, TableCell<User, String>> cellFoctory = (TableColumn<User, String> param) -> {
             // make cell containing buttons
@@ -126,21 +126,21 @@ public class EmployesTableViewsController implements Initializable {
                         FontAwesomeIconView editIcon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL_SQUARE);
 
                         deleteIcon.setOnMouseClicked((MouseEvent event) -> {
-                            isUpdate = false;
-                            int employesId = tblvEmployes.getSelectionModel().getSelectedItem().getUserId();
-                            for (Iterator<User> i = employesData.iterator(); i.hasNext();) {
+                            //isUpdate = false;
+                            int employesId = tblvCustomer.getSelectionModel().getSelectedItem().getUserId();
+                            for (Iterator<User> i = customerData.iterator(); i.hasNext();) {
                                 User emp = i.next();
                                 if (emp.getUserId() == employesId) {
                                     i.remove();
                                 }
                             }
-                            security.deleteEmployes(employesId);
+                            //security.deleteEmployes(employesId);
                         });
 
                         editIcon.setOnMouseClicked((MouseEvent event) -> {
-                            isUpdate = true;
-                            employes = (Employes) tblvEmployes.getSelectionModel().getSelectedItem();
-                            handleAddEmployes(event);
+                           // isUpdate = true;
+                           // employes = (Employes) tblvCustomer.getSelectionModel().getSelectedItem();
+                            //handleAddEmployes(event);
 
                         });
 
@@ -156,7 +156,7 @@ public class EmployesTableViewsController implements Initializable {
             return cell;
         };
 
-        FilteredList<User> filteredData = new FilteredList<>(employesData, b -> true);
+        FilteredList<User> filteredData = new FilteredList<>(customerData, b -> true);
         filterField.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(employe -> {
 
@@ -166,9 +166,9 @@ public class EmployesTableViewsController implements Initializable {
 
                 String lowerCaseFilter = newValue.toLowerCase();
 
-                if (employe.getFirstname().toLowerCase().contains(lowerCaseFilter)) {
+                if (((Customer) employe).getCni().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter matches first name.
-                } else if (((Employes) employe).getEmail().toLowerCase().contains(lowerCaseFilter)) {
+                } else if (((Customer) employe).getEmail().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter matches last name.
                 }
 
@@ -178,27 +178,37 @@ public class EmployesTableViewsController implements Initializable {
         });
 
         SortedList<User> sortedData = new SortedList<>(filteredData);
-        sortedData.comparatorProperty().bind(tblvEmployes.comparatorProperty());
+        sortedData.comparatorProperty().bind(tblvCustomer.comparatorProperty());
         actionCol.setCellFactory(cellFoctory);
-        tblvEmployes.setItems(sortedData);
-
+        tblvCustomer.setItems(sortedData);
     }
 
     @FXML
-
-    private void handleAddEmployes(MouseEvent event) {
+    private void handleAddCustomer(MouseEvent event) {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/views/users/addEmployes.fxml"));
+        loader.setLocation(getClass().getResource("/views/users/AddCustomer.fxml"));
         try {
             loader.load();
         } catch (IOException ex) {
             Logger.getLogger(EmployesTableViewsController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if (isUpdate) {
-            AddEmployesController addEmployesController = loader.getController();
-            addEmployesController.setTextFeilds(employes.getName(), employes.getFirstname(), employes.getEmail(), employes.getRole(), employes.getDepartement());
-        }
         Utilities.showPopup(loader);
+    }
+
+    @FXML
+    private void handleNewOrder(MouseEvent event) {
+    }
+
+    @FXML
+    private void loadCustomerAdress(MouseEvent event) {
+        customer = (Customer) tblvCustomer.getSelectionModel().getSelectedItem();
+        addressData = customer.getAddresses();
+        
+         cityCol.setCellValueFactory(new PropertyValueFactory<>("city"));
+        districtCol.setCellValueFactory(new PropertyValueFactory<>("district"));
+        locationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
+        
+         tblvAddres.setItems(addressData);
 
     }
 

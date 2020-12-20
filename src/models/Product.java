@@ -5,18 +5,27 @@
  */
 package models;
 
+import java.io.File;
+import javafx.scene.image.ImageView;
+import utilities.Utilities;
+
 /**
  *
  * @author ASUS
  */
 public class Product {
-    
+
     private int productId;
     private String code;
     private String name;
     private double price;
     private int quantityInStock;
+    private File productImg;
     private Category productCategory;
+    private String categoryName;
+    private ImageView image;
+
+  
 
     public Product(int productId, String code, String name, double price, int quantityInStock) {
         this.productId = productId;
@@ -24,27 +33,40 @@ public class Product {
         this.name = name;
         this.price = price;
         this.quantityInStock = quantityInStock;
+        this.productCategory = new Category();
+        this.image = null;
     }
 
-    public Product(String code, String name, double price, int quantityInStock) {
-        this.code = code;
+    public Product(String name, double price, int quantityInStock, File img) {
+        this.code = Utilities.generateRandomStringAlphaNumericString(10);
         this.name = name;
         this.price = price;
         this.quantityInStock = quantityInStock;
+        this.productImg = img;
     }
-    
+
     public Product(String code, String name, double price, int quantityInStock, Category productCategory) {
         this.code = code;
         this.name = name;
         this.price = price;
         this.quantityInStock = quantityInStock;
         this.productCategory = productCategory;
+
     }
 
     public Product() {
+        this.productCategory = new Category();
+        image = null;
+
     }
-    
-    
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
 
     public int getProductId() {
         return productId;
@@ -93,6 +115,22 @@ public class Product {
     public void setProductId(int productId) {
         this.productId = productId;
     }
+
+    public File getProductImg() {
+        return productImg;
+    }
+
+    public void setProductImg(File productImg) {
+        this.productImg = productImg;
+    }
+    
+      public void setImage(ImageView image) {
+        this.image = image;
+    }
+
+    public ImageView getImage() {
+        return image;
+    }
     
 
     @Override
@@ -100,7 +138,4 @@ public class Product {
         return "Product{" + "productId=" + productId + ", code=" + code + ", name=" + name + ", price=" + price + ", quantityInStock=" + quantityInStock + ", productCategory=" + productCategory + '}';
     }
 
-   
-    
-    
 }

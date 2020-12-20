@@ -12,40 +12,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="734.0" prefWidth="639.0" style="-fx-background-color: #fff;" stylesheets="@tableview.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.users.AddEmployesController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="563.0" style="-fx-background-color: #fff;" stylesheets="@tableview.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.products.AddProductController">
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="384.0">
-         <children>
-            <Text fill="#2a73ff" strokeType="OUTSIDE" strokeWidth="0.0" text="                   Creer Employer" wrappingWidth="399.625">
-               <font>
-                  <Font size="32.0" />
-               </font>
-               <HBox.margin>
-                  <Insets bottom="10.0" left="10.0" />
-               </HBox.margin>
-            </Text>
-            <ImageView fitHeight="42.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/create.png" />
-               </image>
-            </ImageView>
-         </children>
-      </HBox>
-      <ImageView fx:id="avatar" fitHeight="127.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="productImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/avatar.png" />
-         </image></ImageView>
-      <Label fx:id="avatarNameLbl" text="Avatar" textFill="#2a73ff">
-         <VBox.margin>
-            <Insets top="15.0" />
-         </VBox.margin>
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
+            <Image url="@../images/np.png" />
+         </image>
+      </ImageView>
       <HBox alignment="CENTER">
          <children>
-            <Text fill="#797878" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" wrappingWidth="102.13671875">
+            <Text fill="#797878" strokeType="OUTSIDE" strokeWidth="0.0" text="Libelle" wrappingWidth="102.13671875">
                <font>
                   <Font size="21.0" />
                </font>
@@ -62,12 +38,12 @@
       </HBox>
       <HBox alignment="CENTER">
          <children>
-            <Text fill="#797878" strokeType="OUTSIDE" strokeWidth="0.0" text="prenom" wrappingWidth="102.13671875">
+            <Text fill="#797878" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix" wrappingWidth="102.13671875">
                <font>
                   <Font size="21.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="firstNameFld" focusColor="#2a73ff" prefHeight="25.0" prefWidth="358.0">
+            <JFXTextField fx:id="priceFld" focusColor="#2a73ff" prefHeight="25.0" prefWidth="358.0">
                <font>
                   <Font name="Century Gothic" size="20.0" />
                </font>
@@ -79,12 +55,12 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="89.0">
          <children>
-            <Text fill="#797878" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="102.13671875">
+            <Text fill="#797878" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantite" wrappingWidth="102.13671875">
                <font>
                   <Font size="21.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="emailFld" focusColor="#2a73ff" prefHeight="25.0" prefWidth="358.0">
+            <JFXTextField fx:id="qantityFld" focusColor="#2a73ff" prefHeight="25.0" prefWidth="358.0">
                <font>
                   <Font name="Century Gothic" size="20.0" />
                </font>
@@ -96,33 +72,30 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="114.0">
          <children>
-            <Text fill="#797878" strokeType="OUTSIDE" strokeWidth="0.0" text="Depart" wrappingWidth="102.13671875">
+            <Text fill="#797878" strokeType="OUTSIDE" strokeWidth="0.0" text="Categorie" wrappingWidth="102.13671875">
                <font>
                   <Font size="21.0" />
                </font>
             </Text>
-            <JFXComboBox fx:id="departFld" focusColor="#2a73ff" prefHeight="31.0" prefWidth="358.0" />
+            <JFXComboBox fx:id="categoriesFld" focusColor="#2a73ff" prefHeight="31.0" prefWidth="358.0" />
          </children>
          <VBox.margin>
             <Insets top="25.0" />
          </VBox.margin>
       </HBox>
       <HBox alignment="CENTER">
-         <children>
-            <Text fill="#797878" strokeType="OUTSIDE" strokeWidth="0.0" text="Role" wrappingWidth="102.13671875">
-               <font>
-                  <Font size="21.0" />
-               </font>
-            </Text>
-            <JFXComboBox fx:id="roleFld" focusColor="#2a73ff" prefHeight="31.0" prefWidth="358.0" />
-         </children>
          <VBox.margin>
             <Insets top="25.0" />
          </VBox.margin>
       </HBox>
       <HBox alignment="CENTER">
+         <VBox.margin>
+            <Insets top="17.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER">
          <children>
-            <Text fill="#797878" strokeType="OUTSIDE" strokeWidth="0.0" text="Avatar" wrappingWidth="225.13671875">
+            <Text fill="#797878" strokeType="OUTSIDE" strokeWidth="0.0" text="Images" wrappingWidth="225.13671875">
                <font>
                   <Font size="21.0" />
                </font>
@@ -133,16 +106,13 @@
                </font>
             </JFXButton>
          </children>
-         <VBox.margin>
-            <Insets top="17.0" />
-         </VBox.margin>
       </HBox>
       <Label fx:id="lblErrors" prefHeight="21.0" prefWidth="463.0" style="-fx-font-weight: bold;" textFill="#ff6262">
          <VBox.margin>
             <Insets top="5.0" />
          </VBox.margin>
       </Label>
-      <HBox alignment="CENTER" prefHeight="47.0" prefWidth="460.0">
+      <HBox alignment="CENTER" prefHeight="41.0" prefWidth="599.0">
          <VBox.margin>
             <Insets top="25.0" />
          </VBox.margin>

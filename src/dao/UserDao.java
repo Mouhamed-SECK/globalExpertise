@@ -126,7 +126,12 @@ public class UserDao implements IDao<User> {
 
                 if (rs.getString("type").compareTo("CUSTOMER") == 0) {
                     user = new Customer();
+                     ((Customer) user).setUserId(rs.getInt("userId"));
                     ((Customer) user).setCni(rs.getString("cni"));
+                    ((Customer) user).setPhoneNumber(rs.getString("phoneNumber"));
+                    AddressDao addressDao = new AddressDao();
+                    addressDao.setIdCustomer(user.getUserId());
+                    ((Customer) user).setAddresses(addressDao.selectAll());
                 } else {
                     user = new Employes();
                     ((Employes) user).setDepartement(rs.getString("departement"));
@@ -177,7 +182,7 @@ public class UserDao implements IDao<User> {
         return employes;
     }
 
-    public void delete(int id)  {
+    public void delete(int id) {
         mysql.getConnection();
 
         mysql.initPS(SQL_DELETE);

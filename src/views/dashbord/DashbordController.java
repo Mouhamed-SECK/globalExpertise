@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import models.Employes;
 import utilities.Utilities;
@@ -31,19 +32,18 @@ public class DashbordController implements Initializable {
     @FXML
     private Text roleLabel;
     @FXML
-     private Button listEmployes;
+    private Button listEmployes;
     @FXML
     private Button listCustomer;
     @FXML
     private Text departmentLabel;
     @FXML
-    private AnchorPane mainContent;
+    private VBox mainContent;
 
     private Utilities utils;
     private Employes loggedUser;
-   
-   
-   
+    @FXML
+    private Button btnOverview;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -64,9 +64,17 @@ public class DashbordController implements Initializable {
     @FXML
     public void handleClicks(ActionEvent actionEvent) throws IOException {
         if (actionEvent.getSource() == listEmployes) {
-           utils.loadViewContent(mainContent, "/users/EmployesTableViews");
+            utils.loadViewContent(mainContent, "/users/EmployesTableViews");
         }
-      
+
+        if (actionEvent.getSource() == listCustomer) {
+            utils.loadViewContent(mainContent, "/users/CustomerTableViews");
+        }
+        
+        if (actionEvent.getSource() == btnProducts) {
+            utils.loadViewContent(mainContent, "/products/ProductTableView");
+        }
+
         if (actionEvent.getSource() == btnSignout) {
             utils.changeView(actionEvent, "/authentication/Login");
         }

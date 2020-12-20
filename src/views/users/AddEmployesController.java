@@ -47,8 +47,8 @@ public class AddEmployesController implements Initializable {
     private File file;
     @FXML
     private Label lblErrors;
-    
-    private  Security security;
+
+    private Security security;
     @FXML
     private Label avatarNameLbl;
 
@@ -60,7 +60,7 @@ public class AddEmployesController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       security = new Security();
+        security = new Security();
         // TODO
         departFld.getItems().addAll("Commande", "Livraison", "Comptabilité");
         departFld.getSelectionModel().select("Commande");
@@ -94,11 +94,11 @@ public class AddEmployesController implements Initializable {
         String departement = departFld.getValue();
         String role = roleFld.getValue();
 
-        if (Validation.isEmpty(name) && Validation.isEmpty(firstName) && Validation.isEmpty(email)  && Validation.isEmpty(departement)  && Validation.isEmpty(role) &&  Validation.isEmpty(file.toURI().toString())) {
+        if (Validation.isEmpty(name) && Validation.isEmpty(firstName) && Validation.isEmpty(email) && Validation.isEmpty(departement) && Validation.isEmpty(role) && Validation.isEmpty(file.toURI().toString())) {
             User employes = security.registerEmployes(name, firstName, email, departement, role, file);
-            EmployesTableViewsController.getTblvController().getEmployesData().add(employes); 
+            EmployesTableViewsController.getTblvController().getEmployesData().add(employes);
             this.handleClose(event);
-            
+
         } else {
             Validation.setLabelMessage(lblErrors, Color.TOMATO, "Ces champs ne peuvent être vide");
         }
@@ -115,12 +115,6 @@ public class AddEmployesController implements Initializable {
     private void handleChooseFile(ActionEvent event) {
 
         FileChooser fileChooser = new FileChooser();
-
-        //Set extension filter
-        /* FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (.jpg)", ".JPG");
-        FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (.png)", ".PNG");
-        fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);*/
-        //Show open file dialog
         file = fileChooser.showOpenDialog(null);
 
         if (file != null) {
@@ -130,4 +124,15 @@ public class AddEmployesController implements Initializable {
 
     }
 
+    public void setTextFeilds(String name, String firtsName, String email, String role, String departement) {
+        nameFld.setText(name);
+        firstNameFld.setText(firtsName);
+        emailFld.setText(email);
+        departFld.getSelectionModel().select(departement);
+        roleFld.getSelectionModel().select(role);
+        
+
+    }
+
+  
 }

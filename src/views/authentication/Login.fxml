@@ -14,19 +14,9 @@
     <children>
         <AnchorPane prefHeight="503.0" prefWidth="416.0" style="-fx-background-color: #2a73ff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label alignment="CENTER" layoutX="105.0" layoutY="300.0" prefHeight="23.0" prefWidth="173.0" text="Global Expertise" textFill="WHITE">
-                    <font>
-                        <Font name="Segoe UI" size="18.0" />
-                    </font>
-                </Label>
-                <Label alignment="CENTER" layoutX="89.0" layoutY="336.0" prefHeight="23.0" prefWidth="205.0" text="Application de Gestion" textFill="WHITE">
-                    <font>
-                        <Font name="Segoe UI" size="12.0" />
-                    </font>
-                </Label>
-            <ImageView fitHeight="194.0" fitWidth="247.0" layoutX="81.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="363.0" fitWidth="339.0" layoutX="39.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/GB-logo.png" />
+                  <Image url="@../images/logosimple.png" />
                </image>
             </ImageView>
             </children>
