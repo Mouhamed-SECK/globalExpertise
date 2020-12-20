@@ -5,6 +5,8 @@
  */
 package models;
 
+
+import java.io.File;
 import utilities.Utilities;
 
 /**
@@ -17,10 +19,14 @@ public class Employes extends User {
     private String departement;
     private String role;
     private String matricule;
+    private File avatar;
 
     public Employes() {
     }
-    
+
+    public File getAvatar() {
+        return avatar;
+    }
     
 
     public Employes(String login, String password, String departement, String role, int id, String name, String firstname, String email, String matricule) {
@@ -32,13 +38,14 @@ public class Employes extends User {
         this.matricule = matricule;
     }
 
-    public Employes(String login, String password, String departement, String role, String name, String firstname, String email) {
+    public Employes(String login, String departement, String role, String name, String firstname, String email, File avatar) {
         super(name, firstname, email);
         this.login = login;
-        this.password = password;
+        this.password = Utilities.generateRandomStringAlphaNumericString(7);
         this.departement = departement;
         this.role = role;
         this.matricule = Utilities.generateRandomStringAlphaNumericString(8);
+        this.avatar = avatar;
     }
 
     public String getLogin() {
@@ -84,7 +91,7 @@ public class Employes extends User {
 
     @Override
     public String toString() {
-        return super.toString() + "Employes{" + "login=" + login + ", password=" + password + ", departement=" + departement + ", role=" + role + ", matricule=" + matricule + '}';
+        return "Employes{" + super.toString() + "login=" + login + ", password=" + password + ", departement=" + departement + ", role=" + role + ", matricule=" + matricule + '}';
     }
     
     

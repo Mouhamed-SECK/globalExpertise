@@ -13,7 +13,7 @@ public class Order {
     private int orderId;
     private String orderNumber;
     private Status status;
-    private Adress deleveryAdress;
+    private Address deleveryAdress;
     private LocalDate orderedDate;
     
     public static enum Status  {
@@ -23,14 +23,14 @@ public class Order {
     private Customer customer;
     private List<Product> products;
     
-    public Order(int orderId, String orderNumber, Status status, Adress deleveryAdress, LocalDate orderedDate) {
+    public Order(int orderId, String orderNumber, Status status, Address deleveryAdress, LocalDate orderedDate) {
         this.orderId = orderId;
         this.status = status;
         this.deleveryAdress = deleveryAdress;
         this.orderedDate = orderedDate;
     }
 
-    public Order(String orderNumber, String status, Adress deleveryAdress, LocalDate orderedDate, Customer customer) {
+    public Order(String orderNumber, String status, Address deleveryAdress, LocalDate orderedDate, Customer customer) {
         this.orderNumber =  Utilities.generateRandomStringAlphaNumericString(10);
         this.status = Status.UNDELIVERED;
         this.deleveryAdress = deleveryAdress;
@@ -66,11 +66,11 @@ public class Order {
         this.status = status;
     }
 
-    public Adress getDeleveryAdress() {
+    public Address getDeleveryAdress() {
         return deleveryAdress;
     }
 
-    public void setDeleveryAdress(Adress deleveryAdress) {
+    public void setDeleveryAdress(Address deleveryAdress) {
         this.deleveryAdress = deleveryAdress;
     }
 

@@ -19,7 +19,7 @@ public class Validation {
         return !str.isEmpty();
         
     }
-    
+   
     public static void setLabelMessage(Label label, Color color, String  message) {
         label.setText(message);
         label.setTextFill(color);

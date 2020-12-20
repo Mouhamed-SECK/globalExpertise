@@ -1,18 +1,19 @@
 .button
 {
--fx-background-color : #05071F;
--fx-text-fill : #e7e5e5;
+    -fx-background-color :  #EBE8F9;
+    -fx-text-fill : #02030A;
 }
 .button:hover{
--fx-background-color : #10165F;
+    -fx-background-color : #ecf0f1;
 }
 .button:pressed
 {
--fx-background-color : #1620A1;
+    -fx-background-color : #2a73ff;
+    -fx-text-fill : #fff;
 }
 
 .scroll-pane {
-    -fx-background-color: #02030A;
+    -fx-background-color: #2a73ff;
 }
 
 .scroll-bar:horizontal, .scroll-bar:vertical{

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="563.0" style="-fx-background-color: #fff;" stylesheets="@tableview.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.products.AddProductController">
+   <children>
+      <ImageView fx:id="productImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/np.png" />
+         </image>
+      </ImageView>
+      <HBox alignment="CENTER">
+         <children>
+            <Text fill="#797878" strokeType="OUTSIDE" strokeWidth="0.0" text="Libelle" wrappingWidth="102.13671875">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <JFXTextField fx:id="nameFld" focusColor="#2a73ff" prefHeight="25.0" prefWidth="358.0">
+               <font>
+                  <Font name="Century Gothic" size="20.0" />
+               </font>
+            </JFXTextField>
+         </children>
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER">
+         <children>
+            <Text fill="#797878" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix" wrappingWidth="102.13671875">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <JFXTextField fx:id="priceFld" focusColor="#2a73ff" prefHeight="25.0" prefWidth="358.0">
+               <font>
+                  <Font name="Century Gothic" size="20.0" />
+               </font>
+            </JFXTextField>
+         </children>
+         <VBox.margin>
+            <Insets top="17.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="89.0">
+         <children>
+            <Text fill="#797878" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantite" wrappingWidth="102.13671875">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <JFXTextField fx:id="qantityFld" focusColor="#2a73ff" prefHeight="25.0" prefWidth="358.0">
+               <font>
+                  <Font name="Century Gothic" size="20.0" />
+               </font>
+            </JFXTextField>
+         </children>
+         <VBox.margin>
+            <Insets top="17.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="114.0">
+         <children>
+            <Text fill="#797878" strokeType="OUTSIDE" strokeWidth="0.0" text="Categorie" wrappingWidth="102.13671875">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <JFXComboBox fx:id="categoriesFld" focusColor="#2a73ff" prefHeight="31.0" prefWidth="358.0" />
+         </children>
+         <VBox.margin>
+            <Insets top="25.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER">
+         <VBox.margin>
+            <Insets top="25.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER">
+         <VBox.margin>
+            <Insets top="17.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER">
+         <children>
+            <Text fill="#797878" strokeType="OUTSIDE" strokeWidth="0.0" text="Images" wrappingWidth="225.13671875">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <JFXButton fx:id="chooseImgBtn" onAction="#handleChooseFile" prefHeight="47.0" prefWidth="239.0" style="-fx-background-color: #2a73ff;" styleClass="btn" text="Choisir une img" textFill="WHITE">
+               <font>
+                  <Font name="Century Gothic" size="24.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </HBox>
+      <Label fx:id="lblErrors" prefHeight="21.0" prefWidth="463.0" style="-fx-font-weight: bold;" textFill="#ff6262">
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="41.0" prefWidth="599.0">
+         <VBox.margin>
+            <Insets top="25.0" />
+         </VBox.margin>
+         <children>
+            <JFXButton onAction="#handleSave" prefHeight="47.0" prefWidth="177.0" style="-fx-background-color: #2a73ff;" styleClass="btn" text="Save" textFill="WHITE">
+               <HBox.margin>
+                  <Insets right="8.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Century Gothic" size="24.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="132.0" layoutY="19.0" onAction="#handleClose" prefHeight="47.0" prefWidth="174.0" style="-fx-background-color: #e74c3c;" styleClass="btn" text="Annuler" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="8.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Century Gothic" size="24.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+   </padding>
+</VBox>

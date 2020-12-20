@@ -1,9 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package application;
+
+
 
 
 import javafx.application.Application;
@@ -20,10 +17,11 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-       Parent root = FXMLLoader.load(getClass().getResource("/views/authentication/Login.fxml"));
+       Parent root = FXMLLoader.load(getClass().getResource("/views/authentication/Login.fxml"));      
         Scene scene = new Scene(root);
+        stage.setTitle("Global Expertise");
         stage.setScene(scene);
-        stage.show();
+        stage.show();  
         
         
     }

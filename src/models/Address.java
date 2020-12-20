@@ -9,25 +9,37 @@ package models;
  *
  * @author Mouhamed SECK
  */
-public class Adress {
-    private String addressId;
+public class Address {
+    private int addressId;
     private String city;
     private String location;
     private String district;
+    private User addressCustomer;
 
-    public Adress(String addressId, String city, String location, String district) {
+    public Address(int addressId, String city, String location, String district) {
         this.addressId = addressId;
         this.city = city;
         this.location = location;
         this.district = district;
     }
 
-    public Adress(String city, String location, String district) {
+    public Address(String city, String location, String district) {
         this.city = city;
         this.location = location;
         this.district = district;
     }
+
+    public Address(String city, String location, String district, User addressCustomer) {
+        this.city = city;
+        this.location = location;
+        this.district = district;
+        this.addressCustomer = addressCustomer;
+    }
     
+    
+
+    public Address() {
+    }
     
 
     public String getCity() {
@@ -54,15 +66,26 @@ public class Adress {
         this.district = district;
     }
 
-    public String getAddressId() {
+    public int getAddressId() {
         return addressId;
+    }
+    
+    public int setAddressId(int addressId) {
+       return addressId;
+    }
+
+    public User getAddressCustomer() {
+        return addressCustomer;
+    }
+
+    public void setAddressCustomer(User addressCustomer) {
+        this.addressCustomer = addressCustomer;
     }
 
     @Override
     public String toString() {
-        return "Adress{" + "addressId=" + addressId + ", city=" + city + ", location=" + location + ", district=" + district + '}';
+        return "Address{" + "addressId=" + addressId + ", city=" + city + ", location=" + location + ", district=" + district + ", addressCustomer=" + addressCustomer + '}';
     }
-    
-    
+
     
 }

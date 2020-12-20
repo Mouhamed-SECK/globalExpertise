@@ -5,8 +5,9 @@
  */
 package models;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -16,8 +17,21 @@ public class Customer extends User {
     
     private String phoneNumber;
     private String cni;
-    private List<Adress> addresses;
+    private ObservableList<Address> addresses;
 
+    public ObservableList<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(ObservableList<Address> addresses) {
+        this.addresses = addresses;
+    }
+    
+    
+   
+    public Customer () {
+        
+    }
  
     public Customer(String phoneNumber, String cni, int id, String name, String firstname, String email) {
         super(id, name, firstname, email);
@@ -29,7 +43,7 @@ public class Customer extends User {
         super(name, firstname, email);
         this.phoneNumber = phoneNumber;
         this.cni = cni;
-        this.addresses = new ArrayList<>();
+        this.addresses = FXCollections.observableArrayList();
     }
     
     
@@ -48,10 +62,15 @@ public class Customer extends User {
     public void setCni(String cni) {
         this.cni = cni;
     }
+    
+    public void addAdress(Address a) {
+        addresses.add(a);
+    }
 
+    
     @Override
     public String toString() {
-        return super.toString() +  "Customer{" + "phoneNumber=" + phoneNumber + ", cni=" + cni + ", addresses=" + addresses + '}';
+        return "Customer{" +  super.toString() + "phoneNumber=" + phoneNumber + ", cni=" + cni + ", addresses="  + '}';
     }
     
     

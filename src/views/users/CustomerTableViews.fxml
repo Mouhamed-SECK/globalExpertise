@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="753.0" prefWidth="1009.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.users.CustomerTableViewsController">
+   <stylesheets>
+      <URL value="@tableview.css" />
+   </stylesheets>
+   <children>
+      <TableView fx:id="tblvCustomer" layoutX="14.0" layoutY="90.0" onMouseClicked="#loadCustomerAdress" prefHeight="338.0" prefWidth="969.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+         <columns>
+            <TableColumn fx:id="cniCol" maxWidth="168.0" prefWidth="155.0" style="-fx-alignment: center;" text="Cni" />
+            <TableColumn fx:id="nameCol" maxWidth="156.0" prefWidth="115.0" style="-fx-alignment: center;" text="Nom" />
+            <TableColumn fx:id="firstNameCol" maxWidth="167.0" prefWidth="124.0" style="-fx-alignment: center;" text="Prenom" />
+            <TableColumn fx:id="emailCol" maxWidth="210.0" prefWidth="208.0" style="-fx-alignment: center;" text="email" />
+            <TableColumn fx:id="telCol" maxWidth="257.0" prefWidth="213.0" style="-fx-alignment: center;" text="telephone" />
+            <TableColumn fx:id="actionCol" maxWidth="241.0" prefWidth="165.0" style="-fx-alignment: center;" text="Action" />
+         </columns>
+      </TableView>
+      <Button fx:id="addCustomerBtn" layoutX="830.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#handleAddCustomer" prefHeight="39.0" prefWidth="149.0" text="Ajouter client">
+         <graphic>
+            <ImageView fitHeight="31.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icons8-add-user-male-48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <JFXTextField fx:id="filterField" focusColor="#2a73ff" layoutX="20.0" layoutY="28.0" prefHeight="31.0" prefWidth="295.0" promptText="Rechercher " unFocusColor="#cdd6e8" />
+      <TableView fx:id="tblvAddres" layoutX="14.0" layoutY="489.0" prefHeight="256.0" prefWidth="538.0">
+         <columns>
+            <TableColumn fx:id="cityCol" maxWidth="184.0" prefWidth="156.0" style="-fx-alignment: center;" text="Ville " />
+            <TableColumn fx:id="districtCol" maxWidth="198.0" prefWidth="169.0" style="-fx-alignment: center;" text="Quartier" />
+            <TableColumn fx:id="locationCol" maxWidth="278.0" prefWidth="210.0" style="-fx-alignment: center;" text="Location" />
+         </columns>
+      </TableView>
+      <Button fx:id="passOrderBtn" layoutX="653.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#handleNewOrder" prefHeight="41.0" prefWidth="164.0" text="Passer commande" />
+      <Text fill="#797878" layoutX="582.0" layoutY="543.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ville" wrappingWidth="45.13671875">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="cityFld" focusColor="#2a73ff" layoutX="668.0" layoutY="511.0" prefHeight="39.0" prefWidth="311.0">
+         <font>
+            <Font name="Century Gothic" size="20.0" />
+         </font>
+      </JFXTextField>
+      <Text fill="#797878" layoutX="578.0" layoutY="599.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quartier" wrappingWidth="89.13671875">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="districtFld" focusColor="#2a73ff" layoutX="668.0" layoutY="569.0" prefHeight="39.0" prefWidth="311.0">
+         <font>
+            <Font name="Century Gothic" size="20.0" />
+         </font>
+      </JFXTextField>
+      <Text fill="#797878" layoutX="582.0" layoutY="657.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Loaction" wrappingWidth="89.13671875">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="locationFld" focusColor="#2a73ff" layoutX="667.0" layoutY="623.0" prefHeight="39.0" prefWidth="311.0">
+         <font>
+            <Font name="Century Gothic" size="20.0" />
+         </font>
+      </JFXTextField>
+      <Button fx:id="addAdressBtn" layoutX="827.0" layoutY="691.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="155.0" text="Ajouter Adresse" />
+      <Text fill="#797878" layoutX="723.0" layoutY="502.0" strokeType="OUTSIDE" strokeWidth="0.0" text="    Adresse" wrappingWidth="135.13671875">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Separator layoutX="593.0" layoutY="494.0" prefHeight="4.0" prefWidth="121.0" />
+      <Separator layoutX="856.0" layoutY="495.0" prefHeight="4.0" prefWidth="121.0" />
+   </children>
+</AnchorPane>
